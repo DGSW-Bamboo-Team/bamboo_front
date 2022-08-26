@@ -1,7 +1,13 @@
-import Hello from '~/components/Hello';
+import Toggle from './components/common/Toggle';
 
 function App() {
-  return <Hello />;
+  return (
+    <Toggle>
+      <Toggle.On>불이 켜졌습니다.</Toggle.On>
+      <Toggle.Off>불이 꺼졌습니다.</Toggle.Off>
+      <Toggle.Trigger />
+    </Toggle>
+  );
 }
 
 export default App;
