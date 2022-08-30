@@ -1,3 +1,4 @@
+import Item from '~/components/common/item/index';
 import Toggle from '~/components/common/Toggle';
 
 const MainPage = () => {
@@ -8,6 +9,7 @@ const MainPage = () => {
         <Toggle.Off>Off</Toggle.Off>
         <Toggle.Trigger />
       </Toggle>
+      <Item />
     </>
   );
 };
