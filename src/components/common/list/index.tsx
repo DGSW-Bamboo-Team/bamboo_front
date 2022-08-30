@@ -1,10 +1,10 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import { Container, ItemContainer, ItemName, ItemWriting } from './List';
 import Loader from './Loading';
 import useList from './hooks/useList';
 import { fakerType } from './list.d';
 
-const List = () => {
+const List = memo(() => {
   const { isLoaded, itemLists, setTarget } = useList();
 
   return (
@@ -12,12 +12,13 @@ const List = () => {
       {itemLists.map((v: fakerType) => (
         <ItemValue v={v} />
       ))}
-      <div ref={setTarget} className='Target-Element'>
-        {isLoaded && <Loader />}
-      </div>
+
+      <Loader.Container setTarget={setTarget}>
+        <Loader isLoaded={isLoaded} />
+      </Loader.Container>
     </Container>
   );
-};
+});
 
 const ItemValue = memo(({ v }: { v: fakerType }) => {
   return (

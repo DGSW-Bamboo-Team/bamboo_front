@@ -11,12 +11,25 @@ const LoaderWrap = styled.div`
   align-items: center;
 `;
 
-const Loader = memo(() => {
+interface LoaderType {
+  Container: React.ReactNode;
+}
+
+const Loader: any = memo(({ isLoaded }: { isLoaded: boolean }) => {
   return (
-    <LoaderWrap>
-      <ReactLoading type='spin' color='#A593E0' />
-    </LoaderWrap>
+    <>
+      {isLoaded && (
+        <LoaderWrap>
+          <ReactLoading type='spin' color='#A593E0' />
+        </LoaderWrap>
+      )}
+    </>
   );
 });
 
+const Container = memo(({ setTarget, children }: { setTarget: any; children: React.ReactNode }) => {
+  return <div ref={setTarget}>{children}</div>;
+});
+
+Loader.Container = Container;
 export default Loader;
