@@ -11,11 +11,11 @@ const LoaderWrap = styled.div`
   align-items: center;
 `;
 
-// interface LoaderType {
-//   Container: React.ReactNode;
-// }
+interface LoaderProps {
+  isLoaded: boolean;
+}
 
-const Loader: any = memo(({ isLoaded }: { isLoaded: boolean }) => {
+const Loader: any = memo(({ isLoaded }: LoaderProps) => {
   return (
     <>
       {isLoaded && (

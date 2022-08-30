@@ -2,14 +2,14 @@ import React, { memo } from 'react';
 import { Container, ItemContainer, ItemName, ItemWriting } from './list.style';
 import Loader from './Loading';
 import useList from './hooks/useList';
-import { fakerType } from './list.d';
+import { FakerType } from './list.d';
 
 const List = memo(() => {
   const { isLoaded, itemLists, setTarget } = useList();
 
   return (
     <Container>
-      {itemLists.map((v: fakerType) => (
+      {itemLists.map((v: FakerType) => (
         <ItemValue FAKER={v} />
       ))}
       <Loader.Container setTarget={setTarget}>
@@ -19,7 +19,7 @@ const List = memo(() => {
   );
 });
 
-const ItemValue = memo(({ FAKER }: { FAKER: fakerType }) => {
+const ItemValue = memo(({ FAKER }: { FAKER: FakerType }) => {
   return (
     <ItemContainer>
       <ItemName>{FAKER.name}</ItemName>

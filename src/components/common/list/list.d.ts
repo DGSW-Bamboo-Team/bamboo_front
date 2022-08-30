@@ -1,4 +1,4 @@
-export interface fakerType {
+export interface FakerType {
   name: string | null;
   writing: string | null;
 }
