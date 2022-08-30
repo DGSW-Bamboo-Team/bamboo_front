@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import faker from 'faker';
-import { Container, ItemContainer, ItemName, ItemWriting } from './Item';
+import { Container, ItemContainer, ItemName, ItemWriting } from './List';
 import Loader from './Loading';
 
 interface fakerType {
@@ -8,28 +8,29 @@ interface fakerType {
   writing: string | null;
 }
 
-const Item = () => {
+const List = () => {
   const [target, setTarget] = useState<HTMLDivElement | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [itemLists, setItemLists] = useState<fakerType[]>([{ name: null, writing: null }]);
+  const [itemLists, setItemLists] = useState<fakerType[] | []>([]);
 
-  const getMoreItem = async () => {
+  const getMoreItem = useCallback(async () => {
     setIsLoaded(true);
     await new Promise((resolve) => setTimeout(resolve, 800));
     let Items: fakerType[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => {
       return { name: faker.lorem.word(), writing: faker.lorem.text() };
     });
-    setItemLists((itemLists) => itemLists.concat(Items));
-    setIsLoaded(false);
-  };
 
-  const onIntersect = async ([entry]: any, observer: any) => {
+    setItemLists((itemLists: fakerType[]) => itemLists.concat(Items));
+    setIsLoaded(false);
+  }, [itemLists]);
+
+  const onIntersect = useCallback(async ([entry]: any, observer: any) => {
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
       await getMoreItem();
       observer.observe(entry.target);
     }
-  };
+  }, []);
 
   useEffect(() => {
     let observer: any;
@@ -44,7 +45,7 @@ const Item = () => {
 
   return (
     <Container>
-      {itemLists.map((v) => (
+      {itemLists.map((v: fakerType) => (
         <ItemValue v={v} />
       ))}
       <div ref={setTarget} className='Target-Element'>
@@ -63,4 +64,4 @@ const ItemValue = memo(({ v }: { v: fakerType }) => {
   );
 });
 
-export default Item;
+export default List;
