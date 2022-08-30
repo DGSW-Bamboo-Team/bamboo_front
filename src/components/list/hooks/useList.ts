@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FakerType } from '../list.d';
+import { FakerType } from '../list';
 import faker from 'faker';
 
 const useList = () => {
@@ -18,7 +18,10 @@ const useList = () => {
     setIsLoaded(false);
   };
 
-  const onIntersect = async ([entry]: any, observer: any) => {
+  const onIntersect = async (
+    [entry]: IntersectionObserverEntry[],
+    observer: IntersectionObserver,
+  ) => {
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
       await getMoreItem();
@@ -27,7 +30,7 @@ const useList = () => {
   };
 
   useEffect(() => {
-    let observer: any;
+    let observer: IntersectionObserver;
     if (target) {
       observer = new IntersectionObserver(onIntersect, {
         threshold: 0.4,

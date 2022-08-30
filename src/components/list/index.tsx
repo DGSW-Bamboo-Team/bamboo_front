@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import { Container, ItemContainer, ItemName, ItemWriting } from './list.style';
-import Loader from './Loading';
+import Loader from '../common/loader/Loader';
 import useList from './hooks/useList';
-import { FakerType } from './list.d';
+import { FakerType } from './list';
 
 const List = memo(() => {
   const { isLoaded, itemLists, setTarget } = useList();

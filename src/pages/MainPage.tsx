@@ -1,4 +1,4 @@
-import List from '~/components/common/list/index';
+import List from '~/components/list/index';
 import Toggle from '~/components/common/Toggle';
 
 const MainPage = () => {
