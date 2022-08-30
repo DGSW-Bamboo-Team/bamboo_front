@@ -1,12 +1,22 @@
-import Toggle from './components/common/Toggle';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { MainPage, NotFoundPage, SettingPage } from './pages';
+import Layout from './components/common/Layout';
+import NormalizeStyle from './styles/Normalize';
 
 function App() {
   return (
-    <Toggle>
-      <Toggle.On>불이 켜졌습니다.</Toggle.On>
-      <Toggle.Off>불이 꺼졌습니다.</Toggle.Off>
-      <Toggle.Trigger />
-    </Toggle>
+    <>
+      <NormalizeStyle />
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route index element={<MainPage />} />
+            <Route path='/setting' element={<SettingPage />} />
+            <Route path='*' element={<NotFoundPage />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </>
   );
 }
 

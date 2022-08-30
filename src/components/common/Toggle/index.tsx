@@ -1,5 +1,6 @@
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import useEffectAfterMount from '~/hooks/useEffectAfterMount';
+import useToggle from '~/hooks/useToggle';
 
 interface ToggleProps {
   onToggle?: (on: boolean) => void;
@@ -11,17 +12,10 @@ interface ToggleContextType {
   toggle: () => void;
 }
 
-const noop = () => null;
-const ToggleContext = createContext<ToggleContextType>({
-  on: false,
-  toggle: noop,
-});
+const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
 
 const Toggle = ({ onToggle, children }: ToggleProps) => {
-  const [on, setOn] = useState(false);
-  const toggle = useCallback(() => {
-    setOn((oldOn) => !oldOn);
-  }, []);
+  const { on, toggle } = useToggle();
   const value: ToggleContextType = useMemo(() => ({ on, toggle }), [on, toggle]);
 
   useEffectAfterMount(() => {
@@ -49,7 +43,12 @@ const Off = ({ children }: { children: React.ReactNode }) => {
 
 const Trigger = () => {
   const { on, toggle } = useToggleContext();
-  return <button onClick={toggle}>Toggle to {on ? 'off' : 'on'}</button>;
+
+  return (
+    <>
+      <button onClick={toggle}>Toggle to {on ? 'off' : 'on'}</button>
+    </>
+  );
 };
 
 Toggle.On = On;
