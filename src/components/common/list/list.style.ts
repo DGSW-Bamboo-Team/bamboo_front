@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 
-const Container = styled.main``;
+const Container = styled.ul``;
 
-const ItemContainer = styled.div`
+const ItemContainer = styled.li`
   min-height: 100px;
   overflow: scroll;
   padding: 20px;

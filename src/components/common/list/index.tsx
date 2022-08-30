@@ -10,7 +10,7 @@ const List = memo(() => {
   return (
     <Container>
       {itemLists.map((v: FakerType) => (
-        <ItemValue FAKER={v} />
+        <ItemValue item={v} />
       ))}
       <Loader.Container setTarget={setTarget}>
         <Loader isLoaded={isLoaded} />
@@ -19,11 +19,11 @@ const List = memo(() => {
   );
 });
 
-const ItemValue = memo(({ FAKER }: { FAKER: FakerType }) => {
+const ItemValue = memo(({ item }: { item: FakerType }) => {
   return (
     <ItemContainer>
-      <ItemName>{FAKER.name}</ItemName>
-      <ItemWriting>{FAKER.writing}</ItemWriting>
+      <ItemName>{item.name}</ItemName>
+      <ItemWriting>{item.writing}</ItemWriting>
     </ItemContainer>
   );
 });
