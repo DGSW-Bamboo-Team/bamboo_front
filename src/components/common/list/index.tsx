@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import { Container, ItemContainer, ItemName, ItemWriting } from './List';
 import Loader from './Loading';
 import useList from './hooks/useList';
@@ -10,9 +10,8 @@ const List = memo(() => {
   return (
     <Container>
       {itemLists.map((v: fakerType) => (
-        <ItemValue v={v} />
+        <ItemValue FAKER={v} />
       ))}
-
       <Loader.Container setTarget={setTarget}>
         <Loader isLoaded={isLoaded} />
       </Loader.Container>
@@ -20,11 +19,11 @@ const List = memo(() => {
   );
 });
 
-const ItemValue = memo(({ v }: { v: fakerType }) => {
+const ItemValue = memo(({ FAKER }: { FAKER: fakerType }) => {
   return (
     <ItemContainer>
-      <ItemName>{v.name}</ItemName>
-      <ItemWriting>{v.writing}</ItemWriting>
+      <ItemName>{FAKER.name}</ItemName>
+      <ItemWriting>{FAKER.writing}</ItemWriting>
     </ItemContainer>
   );
 });

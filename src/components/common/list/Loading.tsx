@@ -11,9 +11,9 @@ const LoaderWrap = styled.div`
   align-items: center;
 `;
 
-interface LoaderType {
-  Container: React.ReactNode;
-}
+// interface LoaderType {
+//   Container: React.ReactNode;
+// }
 
 const Loader: any = memo(({ isLoaded }: { isLoaded: boolean }) => {
   return (
