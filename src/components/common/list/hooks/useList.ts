@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { fakerType } from '../index';
+import { fakerType } from '../list.d';
 import faker from 'faker';
 
 const useList = () => {

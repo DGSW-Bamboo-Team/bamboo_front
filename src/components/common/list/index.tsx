@@ -2,11 +2,7 @@ import React, { memo } from 'react';
 import { Container, ItemContainer, ItemName, ItemWriting } from './List';
 import Loader from './Loading';
 import useList from './hooks/useList';
-
-export interface fakerType {
-  name: string | null;
-  writing: string | null;
-}
+import { fakerType } from './list.d';
 
 const List = () => {
   const { isLoaded, itemLists, setTarget } = useList();
