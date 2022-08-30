@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Container, ItemContainer, ItemName, ItemWriting } from './List';
+import { Container, ItemContainer, ItemName, ItemWriting } from './list.style';
 import Loader from './Loading';
 import useList from './hooks/useList';
 import { fakerType } from './list.d';
