@@ -1,7 +1,7 @@
-import StyledFooter from './Footer';
+import { Container } from './Footer.styles';
 
 const Footer = () => {
-  return <StyledFooter>어쩌구 저쩌구 개인정보 처리는 어쩌고.. 익명성 어쩌구저쩌구</StyledFooter>;
+  return <Container>어쩌구 저쩌구 개인정보 처리는 어쩌고.. 익명성 어쩌구저쩌구</Container>;
 };
 
 export default Footer;
