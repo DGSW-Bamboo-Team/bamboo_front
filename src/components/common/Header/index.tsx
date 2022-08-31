@@ -1,4 +1,4 @@
-import { Container, Menu, Menus, Title } from './Header';
+import { Container, Menu, Menus, Title } from './Header.styles';
 
 const Header = () => {
   return (

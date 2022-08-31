@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainPage, NotFoundPage, SettingPage } from './pages';
 import Layout from './components/common/Layout';
-import NormalizeStyle from './styles/Normalize';
+import ResetStyle from './styles/reset';
 
 function App() {
   return (
     <>
-      <NormalizeStyle />
+      <ResetStyle />
       <BrowserRouter>
         <Layout>
           <Routes>
