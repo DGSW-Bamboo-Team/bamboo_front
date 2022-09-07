@@ -7,6 +7,8 @@ const LoaderWrap = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
 `;
 
 export { LoaderWrap };
