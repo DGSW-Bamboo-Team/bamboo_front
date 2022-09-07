@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-const Container = styled.footer`
-  width: 100%;
-  background-color: ${({ theme }) => theme.background};
+const Container = styled.div`
   color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.background};
+  height: 100%;
 `;
 
 export { Container };

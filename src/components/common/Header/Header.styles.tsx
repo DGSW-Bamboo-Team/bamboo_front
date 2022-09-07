@@ -7,10 +7,12 @@ const Container = styled.header`
   min-width: 768px;
   height: 64px;
   border-bottom: 1px solid #d0d0d0;
-  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.text};
+  transition: ease-in-out 0.2s;
 `;
 
 const Title = styled.h1`

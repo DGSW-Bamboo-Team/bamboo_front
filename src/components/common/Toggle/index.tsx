@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useMemo } from 'react';
+import React, { cloneElement, createContext, useContext, useMemo } from 'react';
 import useEffectAfterMount from '~/hooks/useEffectAfterMount';
 import useToggle from '~/hooks/useToggle';
 
 interface ToggleProps {
   onToggle?: (on: boolean) => void;
   children: React.ReactNode;
+  initialValue?: boolean;
 }
 
 interface ToggleContextType {
@@ -14,8 +15,8 @@ interface ToggleContextType {
 
 const ToggleContext = createContext<ToggleContextType | undefined>(undefined);
 
-const Toggle = ({ onToggle, children }: ToggleProps) => {
-  const { on, toggle } = useToggle();
+const Toggle = ({ initialValue = false, onToggle, children }: ToggleProps) => {
+  const { on, toggle } = useToggle(initialValue);
   const value: ToggleContextType = useMemo(() => ({ on, toggle }), [on, toggle]);
 
   useEffectAfterMount(() => {
@@ -41,14 +42,12 @@ const Off = ({ children }: { children: React.ReactNode }) => {
   return on ? null : <>{children}</>;
 };
 
-const Trigger = () => {
-  const { on, toggle } = useToggleContext();
+interface TriggerProps {
+  as: JSX.Element;
+}
 
-  return (
-    <>
-      <button onClick={toggle}>Toggle to {on ? 'off' : 'on'}</button>
-    </>
-  );
+const Trigger = ({ as }: TriggerProps) => {
+  return <>{cloneElement(as)}</>;
 };
 
 Toggle.On = On;

@@ -1,12 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainPage, NotFoundPage, SettingPage } from './pages';
 import Layout from './components/common/Layout';
-import ResetStyle from './styles/reset';
+import ThemeProvider from './contexts/ThemeProvider';
 
 function App() {
   return (
-    <>
-      <ResetStyle />
+    <ThemeProvider>
       <BrowserRouter>
         <Layout>
           <Routes>
@@ -16,7 +15,7 @@ function App() {
           </Routes>
         </Layout>
       </BrowserRouter>
-    </>
+    </ThemeProvider>
   );
 }
 

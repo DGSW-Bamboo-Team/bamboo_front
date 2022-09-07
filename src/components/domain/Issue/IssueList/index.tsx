@@ -5,6 +5,7 @@ import useIntersectionTarget from '~/hooks/useIntersectionTarget';
 import IssueBox from '../IssueBox';
 import getMoreItems from '~/services/getMoreItems';
 import { FakerType } from '../Issue.types';
+import { Container } from './IssueList.style';
 
 function IssueList() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,7 +19,6 @@ function IssueList() {
     if (entry.isIntersecting && !isLoaded) {
       observer.unobserve(entry.target);
       const items = await getMoreItems();
-      console.log(items);
       setItemLists((prevItemList) => [...prevItemList, ...items]);
       observer.observe(entry.target);
       setIsLoaded(false);
@@ -28,7 +28,7 @@ function IssueList() {
   const loadTarget = useIntersectionTarget(handleIntersect);
 
   return (
-    <>
+    <Container>
       <List
         items={itemLists}
         renderItem={({ id, name, writing }) => <IssueBox key={id} name={name} writing={writing} />}
@@ -37,7 +37,7 @@ function IssueList() {
       <Loader.Container ref={loadTarget}>
         <Loader isLoaded={isLoaded} />
       </Loader.Container>
-    </>
+    </Container>
   );
 }
 
